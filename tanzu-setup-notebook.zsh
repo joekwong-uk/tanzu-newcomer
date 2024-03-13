@@ -21,8 +21,6 @@ brew tap weaveworks/tap
 brew install weaveworks/tap/eksctl
 # Tanzu CLI - Powerful cli tools help you to setup and control Tanzu environment
 brew install vmware-tanzu/tanzu/tanzu-cli
-# (Alternative installation) Or download and install it using pivnet cli
-pivnet download-product-files --product-slug='tanzu-application-platform' --release-version='1.8.0' --product-file-id=1730650   
 # Install latest plugin for Tanzu CLI
 tanzu plugin install --group vmware-tkg/default
 # Auto Completion! Productivity gain!! - Add lines to .zshrc for autocomplete
