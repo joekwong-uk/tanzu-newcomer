@@ -1,7 +1,7 @@
 # Install Home Brew
 export HOMEBREW_NO_INSTALL_FROM_API=1
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-export PATH="/opt/homebrew/bin:$PATH" >> ~/.zshrc
+echo 'export PATH="/opt/homebrew/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
 
 # Install Visual Studio Code and shell notebook extension
 brew install --cask visual-studio-code
@@ -15,7 +15,6 @@ code --install-extension tylerleonhardt.shell-runner-notebooks
 brew install kubectl kubectx k9s jq wget curl
 curl -sS https://webi.sh/kubens | sh
 
-
 # Cloud CLI
 # AWS / Google Cloud / Azure
 brew install awscli
@@ -26,37 +25,41 @@ brew install --cask google-cloud-sdk
 brew tap weaveworks/tap
 brew install weaveworks/tap/eksctl
 
+# Pivotal Net Cli - Help download binaries or code from tanzu netework (fomerly know as pivotal Net)
+brew install pivotal/tap/pivnet-cli
+
 # Tanzu CLI - Powerful cli tools help you to setup and control Tanzu environment
 brew install vmware-tanzu/tanzu/tanzu-cli
 
 # Install latest plugin for Tanzu CLI
 tanzu plugin install --group vmware-tkg/default
 
-# Auto Completion! Productivity gain!! - Add lines to .zshrc for autocomplete
-autoload -Uz compinit && compinit
-autoload bashcompinit && bashcompinit
-
-# kubectl autocompletion
-compinit
-source <(kubectl completion zsh)
-
-# gcloud auto complete
-source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-
-# aws auto complete
-complete -C '/usr/local/bin/aws_completer' aws
-
-# EKSCTL
-source <(eksctl completion zsh)
-
-# azure auto complete
-source $(brew --prefix)/etc/bash_completion.d/az
-
-# tanzu auto complete
-source <(tanzu completion zsh)
-compdef _tanzu tanzu
-
 # Install Carvel Tools
 brew tap vmware-tanzu/carvel
 brew install kapp ytt kbld imgpkg vendir kctrl
+
+# Auto Completion! Productivity gain!! - Add lines to .zshrc for autocomplete
+# echo 'export PATH="/opt/homebrew/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
+echo 'autoload -Uz compinit && compinit' >> ~/.zshrc && source ~/.zshrc
+echo 'autoload bashcompinit && bashcompinit' >> ~/.zshrc && source ~/.zshrc
+
+# kubectl autocompletion
+echo 'compinit' >> ~/.zshrc && source ~/.zshrc
+echo 'source <(kubectl completion zsh)' >> ~/.zshrc && source ~/.zshrc
+
+# gcloud auto complete
+echo 'source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"' >> ~/.zshrc && source ~/.zshrc
+echo 'source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"' >> ~/.zshrc && source ~/.zshrc
+
+# aws auto complete
+echo 'complete -C '/usr/local/bin/aws_completer' aws' >> ~/.zshrc && source ~/.zshrc
+
+# EKSCTL
+echo 'source <(eksctl completion zsh)' >> ~/.zshrc && source ~/.zshrc
+
+# azure auto complete
+echo 'source $(brew --prefix)/etc/bash_completion.d/az' >> ~/.zshrc && source ~/.zshrc
+
+# tanzu auto complete
+echo 'source <(tanzu completion zsh)' >> ~/.zshrc && source ~/.zshrc
+echo 'compdef _tanzu tanzu' >> ~/.zshrc && source ~/.zshrc% 
