@@ -1,0 +1,18 @@
+#reference document https://docs.vmware.com/en/Tanzu-Data-Hub/1.0.0/tdh/install.html 
+
+#login pivnet cli with your api token
+export $PIVNET_TOKEN='your_token'
+pivnet login --api-token=$PIVNET_TOKEN
+
+#download data hub installer from pivnet
+
+pivnet download-product-files --product-slug='vmware-tanzu-data-hub' --release-version='1.0.0' --product-file-id=1784004
+
+#install downloaded file
+sudo install tdh-darwin-arm64 /usr/local/bin/tdh-installer
+
+#kickstart the installation and bring up your default broweser
+tdh-installer install --ui
+
+#only Vsphere with Tanzu and Openshift support on 30 May 2024 Experiment adjoured
+
