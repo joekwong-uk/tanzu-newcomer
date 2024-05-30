@@ -5,6 +5,7 @@ echo 'export PATH="/opt/homebrew/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
 
 # Install Visual Studio Code and shell notebook extension
 brew install --cask visual-studio-code
+#  shell notebook extension fail behind some firewall, you might need to search this extension using code UI
 code --install-extension tylerleonhardt.shell-runner-notebooks
 
 # Now try to close this file and open again in a notebook format
@@ -16,9 +17,11 @@ brew install kubectl kubectx k9s jq wget curl
 curl -sS https://webi.sh/kubens | sh
 
 # Cloud CLI
-# AWS / Google Cloud / Azure
+# AWS 
 brew install awscli
+# Azure
 brew install azure-cli
+# Google Cloud 
 brew install --cask google-cloud-sdk
 
 # EKSCTL
@@ -31,15 +34,16 @@ brew install pivotal/tap/pivnet-cli
 # Tanzu CLI - Powerful cli tools help you to setup and control Tanzu environment
 brew install vmware-tanzu/tanzu/tanzu-cli
 
-# Install latest plugin for Tanzu CLI
+# Install latest plugin for Tanzu CLI / you may be prompted for EULA/CIP 
 tanzu plugin install --group vmware-tkg/default
-
+tanzu plugin install --group vmware-tanzu/platform-engineer
 # Install Carvel Tools
 brew tap vmware-tanzu/carvel
 brew install kapp ytt kbld imgpkg vendir kctrl
 
 # Auto Completion! Productivity gain!! - Add lines to .zshrc for autocomplete
-# echo 'export PATH="/opt/homebrew/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
+touch  ~/.zshrc
+echo 'export PATH="/opt/homebrew/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
 echo 'autoload -Uz compinit && compinit' >> ~/.zshrc && source ~/.zshrc
 echo 'autoload bashcompinit && bashcompinit' >> ~/.zshrc && source ~/.zshrc
 
@@ -62,4 +66,4 @@ echo 'source $(brew --prefix)/etc/bash_completion.d/az' >> ~/.zshrc && source ~/
 
 # tanzu auto complete
 echo 'source <(tanzu completion zsh)' >> ~/.zshrc && source ~/.zshrc
-echo 'compdef _tanzu tanzu' >> ~/.zshrc && source ~/.zshrc% 
+echo 'compdef _tanzu tanzu' >> ~/.zshrc && source ~/.zshrc
